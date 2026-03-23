@@ -1,0 +1,27 @@
+[package]
+name = "sequential-combination-rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rmcp = { version = "0.1.2", features = ["server", "macros"] }
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9"
+fastembed = "3.10"
+instant-distance = "0.6"
+regex = "1.10"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+anyhow = "1.0"
+async-trait = "0.1"
+futures = "0.3"
+ndarray = "0.15"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = 'abort'
+strip = true
