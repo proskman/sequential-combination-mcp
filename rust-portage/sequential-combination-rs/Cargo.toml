@@ -1,0 +1,49 @@
+[package]
+name = "sequential-combination-rs"
+version = "1.0.0"
+edition = "2021"
+description = "Sequential Combination MCP Server - Rust Port (Zero-Dependency ML)"
+authors = ["Sequential Combination Team"]
+license = "MIT"
+
+[[bin]]
+name = "sequential-combination-rs"
+path = "src/main.rs"
+
+[dependencies]
+# === MCP Protocol (official Rust SDK) ===
+# Features: server + macros for #[tool_box] and #[tool] attribute macros
+rmcp = { version = "0.1", features = ["server", "macros"] }
+schemars = "0.8"
+
+# === Async Runtime ===
+tokio = { version = "1", features = ["full"] }
+
+# === Serialization ===
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+
+# === ML / Embeddings (Zero Python dependency, ONNX-backed) ===
+fastembed = "3"
+
+# === Vector Search (HNSW - In-Memory, No DB server required) ===
+instant-distance = "0.6"
+
+# === Text Processing (SIMD-accelerated) ===
+regex = "1"
+walkdir = "2"
+
+# === Error Handling ===
+anyhow = "1"
+thiserror = "1"
+
+# === Logging to stderr ONLY (prevents JSON-RPC stdout corruption) ===
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
