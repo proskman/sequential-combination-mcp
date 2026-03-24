@@ -105,11 +105,7 @@ SkillsIndexer ready.
 The `skills/` folder must contain subdirectories, each with a `SKILL.md` file:
 ```
 skills/
-├── css-master/
-│   └── SKILL.md
-├── api-security-best-practices/
-│   └── SKILL.md
-└── ...
+1259+ skill files
 ```
 
 ### Stage Profiles (`config/stage_profiles.yaml`)
